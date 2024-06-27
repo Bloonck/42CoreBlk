@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:55:13 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/06/24 17:00:41 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:46:48 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strnstr(char *str, char *to_find, size_t len)
 	{
 		tempstr = str;
 		ptofind = to_find;
-		while ((*ptofind != '\0') && (*tempstr == *ptofind))
+		while ((*ptofind != '\0') && (*tempstr == *ptofind) && len-- > 0)
 		{
 			ptofind++;
 			tempstr++;
@@ -34,5 +34,5 @@ char	*ft_strnstr(char *str, char *to_find, size_t len)
 			return (tempstr - (ptofind - to_find));
 		str++;
 	}
-	return (0);
+	return (NULL);
 }

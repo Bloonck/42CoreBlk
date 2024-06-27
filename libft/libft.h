@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:57:27 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/06/21 16:40:25 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:38:00 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_list
 }	t_list;
 
 int		ft_atoi(char *str);
-char	*ft_itoa(int n);
+char	*ft_itoa(long n);
 void	ft_bzero(void *memorypointer, size_t byteamount);
 void	*ft_calloc(size_t count, size_t size);
 int		ft_isalnum(int c);
@@ -48,7 +48,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strjoin(const char *s1, const char *s2);
 size_t	ft_strlcat(char *dest, char *src, unsigned int size);
 int		ft_strlcpy(char *destination, char *source, size_t destsize);
-int		ft_strlen(char *str);
+size_t	ft_strlen(char *str);
 int		ft_strncmp(char *s1, char *s2, unsigned int n);
 char	*ft_strnstr(char *str, char *to_find, size_t len);
 char	*ft_strrchr(char *string, int character);

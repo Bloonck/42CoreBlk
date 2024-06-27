@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:26:04 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/06/13 16:13:51 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:39:35 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,23 @@
 static int	substrcount(const char *str, char c)
 {
 	int	i;
-	int	count;
+	int	wordcount;
 
 	i = 0;
-	count = 0;
+	wordcount = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] == c)
-			count++;
+		if (str[i] != c)
+		{
+			wordcount++;
+			while (str[i] != c && str[i] != '\0')
+				i++;
+			if (str[i] == '\0')
+				wordcount++;
+		}
 		i++;
 	}
-	return (count + 1);
+	return (wordcount);
 }
 
 static char	*substrextract(char **strp, char c)
@@ -45,6 +51,7 @@ static char	*substrextract(char **strp, char c)
 	}
 	ft_memcpy(substr, substart, sublength);
 	substr[sublength] = '\0';
+	(*strp)++;
 	return (substr);
 }
 
@@ -54,7 +61,7 @@ static void	arrayfree(char **strarr)
 
 	i = 0;
 	if (!strarr)
-		return ;
+		return (NULL);
 	while (strarr[i] != NULL)
 		free(strarr[i++]);
 	free(strarr);
@@ -85,6 +92,7 @@ char	**ft_split(const char *s, char c)
 	}
 	return (strarr);
 }
+
 /*
 #include <stdio.h>
 int main() {

@@ -6,56 +6,72 @@
 /*   By: zbin-md- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 17:54:18 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/06/24 19:31:03 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:37:23 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+#include "libft.h"
 
-static int	digitcount(int n)
+static int	digitcount(long long n)
 {
-	int	count;
+	size_t	count;
+	int		negativetoggle;
 
 	count = 0;
-	if (n == 0)
-		return (1);
+	negativetoggle = 0;
 	if (n < 0)
 	{
-		n = -n;
 		count++;
+		negativetoggle++;
+		n = -n;
 	}
 	while (n > 0)
 	{
-		n /= 10;
 		count++;
+		n /= 10;
 	}
 	return (count);
 }
 
-char	*ft_itoa(int n)
+static char	*makestring(char *resultstr, long number, int len, int negtoggle)
 {
-	char	*numbuffer;
-	int		i;
-	int		negativesign;
-	int		length;
-
-	negativesign = 0;
-	length = digitcount(n);
-	i = length - 1;
-	numbuffer = malloc((length + 1) * sizeof(char));
-	if (n < 0)
-	{
-		n = -n;
-		negativesign = 1;
-	}
-	while (n > 0)
-	{
-		numbuffer[i--] = (n % 10) + '0';
-		n /= 10;
-	}
-	if (negativesign == 1)
-		numbuffer[0] = '-';
+	if (number == 0)
+		return (ft_strdup("0"));
 	else
-		i++;
-	numbuffer[length + 1] = '\0';
-	return (numbuffer);
+		resultstr = malloc(sizeof(char) * (len + 1));
+	if (!resultstr)
+		return (0);
+	negtoggle = 0;
+	if (number < 0)
+	{
+		negtoggle++;
+		number = -number;
+	}
+	resultstr[len] = '\0';
+	while (--len)
+	{
+		resultstr[len] = (number % 10) + '0';
+		number /= 10;
+	}
+	if (negtoggle == 1)
+		resultstr[0] = '-';
+	else
+		resultstr[0] = (number % 10) + '0';
+	return (resultstr);
+}
+
+char	*ft_itoa(long n)
+{
+	int		len;
+	int		negativetoggle;
+	char	*returnstring;
+	long	number;
+
+	number = n;
+	len = digitcount(n);
+	returnstring = 0;
+	negativetoggle = 0;
+	returnstring = makestring(returnstring, number, len, negativetoggle);
+	if (!returnstring)
+		return (0);
+	return (returnstring);
 }
