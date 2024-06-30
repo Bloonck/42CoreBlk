@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:13:17 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/06/24 19:29:16 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/06/30 15:43:42 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	*ft_strtrim(const char *s1, const char *set)
 		rear--;
 	}
 	result = malloc(sizeof(char) * (rear - front + 2));
+	if (!result)
+		return (NULL);
 	ft_memcpy(result, front, (rear - front + 1));
 	result[rear - front + 1] = '\0';
 	return (result);

@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:26:04 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/06/27 17:39:35 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/06/30 15:39:07 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,82 +14,107 @@
 
 static int	substrcount(const char *str, char c)
 {
-	int	i;
-	int	wordcount;
+	int		i;
+	size_t	wordcount;
 
 	i = 0;
 	wordcount = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
-		if (str[i] != c)
-		{
+		while (str[i] == c)
+			i++;
+		if ((i > 0) && (str[i - 1] != c))
 			wordcount++;
-			while (str[i] != c && str[i] != '\0')
-				i++;
-			if (str[i] == '\0')
-				wordcount++;
-		}
-		i++;
+		if (str[i])
+			i++;
 	}
+	if ((wordcount == 0) && (str[i - 1] == c))
+		return (0);
+	if (str[0] == c)
+		wordcount++;
 	return (wordcount);
 }
 
-static char	*substrextract(char **strp, char c)
+static char	**arrayalloc(char **substrarr, const char *str, char c)
 {
-	char	*substart;
-	char	*substr;
-	int		sublength;
+	size_t	substrlen;
+	int		substrarrindex;
+	int		strindex;
 
-	substart = *strp;
-	while (**strp != c && **strp != '\0')
-		(*strp)++;
-	sublength = *strp - substart;
-	substr = malloc(sizeof(char) * (sublength + 1));
-	if (!substr)
+	substrarrindex = 0;
+	strindex = 0;
+	substrlen = 0;
+	while (str[strindex])
 	{
-		return (NULL);
+		if ((str[strindex] != c))
+			substrlen++;
+		else if ((strindex > 0) && (str[strindex - 1] != c))
+		{
+			substrarr[substrarrindex] = malloc(sizeof(char) * (substrlen + 1));
+			substrlen = 0;
+			substrarrindex++;
+		}
+		if (str[strindex + 1] == '\0' && str[strindex] != c)
+			substrarr[substrarrindex] = malloc(sizeof(char) * (substrlen + 1));
+		strindex++;
 	}
-	ft_memcpy(substr, substart, sublength);
-	substr[sublength] = '\0';
-	(*strp)++;
-	return (substr);
+	return (substrarr);
 }
 
-static void	arrayfree(char **strarr)
+static char	**arraygen(char **substrarr, const char *str, char c)
 {
-	int	i;
+	int	substrarrindex;
+	int	substrindex;
+	int	strindex;
 
-	i = 0;
-	if (!strarr)
-		return (NULL);
-	while (strarr[i] != NULL)
-		free(strarr[i++]);
-	free(strarr);
+	substrarrindex = 0;
+	substrindex = 0;
+	strindex = 0;
+	while (str[strindex])
+	{
+		if (str[strindex] != c)
+			substrarr[substrarrindex][substrindex++] = str[strindex];
+		else if (str[strindex] > 0 && str[strindex - 1] != c)
+		{
+			if (strindex != 0)
+			{
+				substrarr[substrarrindex][substrindex] = '\0';
+				substrindex = 0;
+				substrarrindex++;
+			}
+		}
+		if (str[strindex] != c && str[strindex + 1] == '\0')
+			substrarr[substrarrindex][substrindex] = '\0';
+		strindex++;
+	}
+	return (substrarr);
 }
 
 char	**ft_split(const char *s, char c)
 {
-	int		i;
 	char	**strarr;
-	char	*strpoint;
+	int		wordcount;
 
-	strarr = malloc(sizeof(char *) * substrcount(s, c) + 1);
-	if (!strarr)
-		return (NULL);
-	strarr[substrcount(s, c)] = NULL;
-	strpoint = (char *)s;
-	i = 0;
-	while (i < substrcount(s, c))
+	if (!s || !*s)
 	{
-		strarr[i++] = substrextract(&strpoint, c);
-		if (strarr[i - 1] == NULL)
-		{
-			arrayfree(strarr);
+		strarr = malloc(sizeof(char *));
+		if (!strarr)
 			return (NULL);
-		}
-		if (*strpoint == c)
-			strpoint++;
+		*strarr = (void *)0;
+		return (strarr);
 	}
+	wordcount = substrcount(s, c);
+	strarr = malloc(sizeof(char *) * (wordcount + 1));
+	if (!strarr)
+		return (0);
+	if (arrayalloc(strarr, s, c) != 0)
+		arraygen(strarr, s, c);
+	else
+	{
+		free(strarr);
+		return (NULL);
+	}
+	strarr[wordcount] = (void *)0;
 	return (strarr);
 }
 

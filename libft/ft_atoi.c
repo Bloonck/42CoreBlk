@@ -6,13 +6,13 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:41:57 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/06/21 19:17:28 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/06/30 16:03:01 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	num;

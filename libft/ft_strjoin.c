@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 09:55:01 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/06/14 18:55:30 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/06/30 15:43:14 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	length1 = ft_strlen((char *)s1);
 	length2 = ft_strlen((char *)s2);
 	newstr = malloc(sizeof(char) * (length1 + length2 + 1));
+	if (!newstr)
+		return (NULL);
 	ft_memcpy(newstr, s1, length1 + 1);
 	ft_strcat(newstr, (char *)s2);
 	return (newstr);

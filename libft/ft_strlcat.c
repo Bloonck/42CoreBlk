@@ -6,13 +6,13 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:01:54 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/06/26 20:12:08 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/06/30 15:58:10 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, char *src, unsigned int size)
+size_t	ft_strlcat(char *dest, const char *src, unsigned int size)
 {
 	size_t	destlen;
 	size_t	srclen;

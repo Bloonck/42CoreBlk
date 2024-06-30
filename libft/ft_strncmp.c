@@ -6,11 +6,11 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:52:16 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/06/14 21:42:38 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/06/30 15:53:23 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
 {
 	unsigned int	i;
 
