@@ -6,10 +6,12 @@
 #    By: zbin-md- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/20 17:59:18 by zbin-md-          #+#    #+#              #
-#    Updated: 2024/07/02 12:16:48 by zbin-md-         ###   ########.fr        #
+#    Updated: 2024/07/31 16:29:09 by zbin-md-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME			=			libft
+
+#~~~~~~~~~~~~~~~~ Sources ~~~~~~~~~~~~~~~~~~~#
 
 MAINSRC			=			ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 							ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
@@ -21,9 +23,13 @@ MAINSRC			=			ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 
 OBJECTS			=			$(MAINSRC:.c=.o)
 
+#~~~~~~~~~~~~~~~~ Variables ~~~~~~~~~~~~~~~~~#
+
 COMP			=			gcc
 CFLAGS			=			-Wall -Werror -Wextra
 REMOVE			=			rm -rf
+
+#~~~~~~~~~~~~~~~~ Recipes ~~~~~~~~~~~~~~~~~~~#
 
 all:	$(NAME)
 

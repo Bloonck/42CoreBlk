@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:11:09 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/07/30 17:09:21 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/07/31 16:10:45 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_printnbr(int n)
 	return (len);
 }
 
-
+/*
 #include <stdio.h>
 int main()
 {
@@ -64,4 +64,4 @@ int main()
 	printf("4th test: %d\n", reschar4);
 
 	return (0);
-}
+}*/
