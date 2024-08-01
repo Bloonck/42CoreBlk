@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:38:06 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/07/30 15:48:06 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/08/01 14:32:34 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	numlen(int number)
 	while (number != 0)
 	{
 		length++;
-		num /= 10;
+		number /= 10;
 	}
 	return (length);
 }
@@ -31,11 +31,12 @@ char	*ft_utoa(unsigned int n)
 	int		len;
 	char	*num;
 
-	len = numlen(num);
+	len = 0;
 	num = (char *)malloc(sizeof(char) * len);
 	if (!num)
 		return (NULL);
 	num[len] = '\0';
+	len = numlen((int)num);
 	while (n != 0)
 	{
 		num[len - 1] = (n % 10) + '0';
@@ -56,7 +57,7 @@ int	ft_printuint(unsigned int n)
 	else
 	{
 		num = ft_utoa(n);
-		printlen += ft_putstr_fd(num, 1);
+		printlen += ft_printstr(num);
 	}
 	return (printlen);
 }

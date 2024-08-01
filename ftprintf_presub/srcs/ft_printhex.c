@@ -6,7 +6,7 @@
 /*   By: zbin-md- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:22:50 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/07/29 13:35:45 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/08/01 13:55:07 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ static int	hexlen(unsigned int number)
 	int	length;
 
 	length = 0;
-	while (num != 0)
+	while (number != 0)
 	{
 		length++;
-		num /= 16;
+		number /= 16;
 	}
 	return (length);
 }
 
-static int	puthex(unsigned int number, const char format)
+static void	puthex(unsigned int number, const char format)
 {
 	if (number >= 16)
 	{

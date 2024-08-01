@@ -6,7 +6,7 @@
 #    By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/30 16:21:57 by zbin-md-          #+#    #+#              #
-#    Updated: 2024/07/31 14:48:42 by zbin-md-         ###   ########.fr        #
+#    Updated: 2024/07/31 17:33:20 by zbin-md-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ HEADER		=	headers
 
 LIBFT		=	libft
 
-SRCS_DIR	=	srcs
+SRCS_DIR	=	srcs/
 
-OBJS_DIR	=	objs
+OBJS_DIR	=	objs/
 
 COMP		=	gcc
 
@@ -39,7 +39,7 @@ OBJS		=	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRCS_FILES)))
 
 #~~~~~~~~~~~~~~~~~ Recipes ~~~~~~~~~~~~~~~~~~~#
 
-OBJCHECK	=	.directory_exists 	#This file isnt actually created, 
+OBJCHECK	=	.cache_exists 		#This file isnt actually created, 
 									#It's just here to create a dependency
 
 all:	$(NAME)
@@ -47,7 +47,7 @@ all:	$(NAME)
 $(NAME):	$(OBJS)
 
 		@make -C $(LIBFT)
-		@cp $(LIBFT)/libft.a
+		@cp $(LIBFT)/libft.a .
 		@mv libft.a $(NAME)
 		@$(AR) $(NAME) $(OBJS)
 		@echo "~~~~~~~ Compilation done! ~~~~~~~"
@@ -55,11 +55,11 @@ $(NAME):	$(OBJS)
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c | $(OBJCHECK)
 
 		@echo "~~~~~~~ Compiling... ~~~~~~~"
-		@$(COMP) $(COMPFLAGS) $(HEADERS) -c <$ -o $@
+		@$(COMP) $(COMPFLAGS) $(HEADER) -c $< -o $@
 
 $(OBJCHECK):
 
-		@mkdir -p $(OBJ_DIR)
+		@mkdir -p $(OBJS_DIR)
 
 clean:
 
@@ -70,8 +70,7 @@ clean:
 fclean: clean
 
 		@$(RM) $(NAME)
-		@$(RM) $(OBJS_DIR)
-		@echo "~~~~~~~ Cleaned Objects! ~~~~~~~"
+		@$(RM) $(OBJS_DIR)	
 		@echo "~~~~~~~ Cleaned Archive! ~~~~~~~"
 
 re:	fclean all
