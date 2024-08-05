@@ -6,14 +6,15 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:11:09 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/07/31 16:10:45 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/08/05 14:00:59 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
+#include <stdlib.h>
 
-int	ft_printchar(int c)
+int	ft_printchar(char c)
 {
 	write(1, &c, 1);
 	return (1);
@@ -42,8 +43,7 @@ int	ft_printnbr(int n)
 	char	*num;
 
 	num = ft_itoa(n);
-	len = ft_strlen(num);
-	ft_putnbr_fd(n, 1);
+	len = ft_printstr(num);
 	free(num);
 	return (len);
 }

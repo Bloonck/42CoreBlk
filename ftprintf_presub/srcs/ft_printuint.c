@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:38:06 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/08/01 14:32:34 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/08/05 18:10:03 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_utoa(unsigned int n)
 	char	*num;
 
 	len = 0;
-	num = (char *)malloc(sizeof(char) * len);
+	num = (char *)malloc(sizeof(char) * (len + 1));
 	if (!num)
 		return (NULL);
 	num[len] = '\0';
@@ -58,6 +58,7 @@ int	ft_printuint(unsigned int n)
 	{
 		num = ft_utoa(n);
 		printlen += ft_printstr(num);
+		free(num);
 	}
 	return (printlen);
 }

@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:31:00 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/07/31 16:09:51 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:24:34 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ptrlen(uintptr_t ptr)
 	return (len);
 }
 
-static int	putptr(uintptr_t ptr)
+static void	putptr(uintptr_t ptr)
 {
 	if (ptr >= 16)
 	{
@@ -40,14 +40,20 @@ static int	putptr(uintptr_t ptr)
 		if (ptr > 9)
 			ft_putchar_fd(ptr + 'a', 1);
 	}
-	return (0);
 }
 
-int	ft_printptr(unsigned long long pointer)
+int	ft_printptr(uintptr_t pointer)
 {
+	int	outputlen;
+
+	outputlen = 0;
+	outputlen += write(1, "0x", 2);
 	if (pointer == 0)
 		return (write(1, "0", 1));
 	else
+	{
 		putptr(pointer);
-	return (ptrlen(pointer));
+		outputlen += ptrlen(pointer);
+	}
+	return (outputlen);
 }

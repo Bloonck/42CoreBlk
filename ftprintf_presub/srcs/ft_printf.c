@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 14:48:54 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/08/01 13:24:38 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/08/05 13:59:56 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	format_printlist(va_list args, const char format)
 
 int	ft_printf(const char *string, ...)
 {
-	int	i;
-	int	printlen;
-	va_list args;
+	int		i;
+	int		printlen;
+	va_list	args;
 
 	i = 0;
 	printlen = 0;
@@ -47,7 +47,10 @@ int	ft_printf(const char *string, ...)
 	while (string[i])
 	{
 		if (string[i] == '%')
+		{
 			printlen += format_printlist(args, string[i + 1]);
+			i++;
+		}
 		else
 			printlen += ft_printchar(string[i]);
 		i++;
