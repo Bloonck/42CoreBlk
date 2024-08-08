@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:31:00 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/08/05 16:24:34 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/08/08 15:13:21 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static void	putptr(uintptr_t ptr)
 	{
 		if (ptr <= 9)
 			ft_putchar_fd(ptr + '0', 1);
-		if (ptr > 9)
-			ft_putchar_fd(ptr + 'a', 1);
+		else
+			ft_putchar_fd(ptr - 10 + 'a', 1);
 	}
 }
 
@@ -49,7 +49,7 @@ int	ft_printptr(uintptr_t pointer)
 	outputlen = 0;
 	outputlen += write(1, "0x", 2);
 	if (pointer == 0)
-		return (write(1, "0", 1));
+		outputlen += (write(1, "0", 1));
 	else
 	{
 		putptr(pointer);

@@ -6,14 +6,14 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:38:06 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/08/05 18:10:03 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/08/08 14:28:05 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-int	numlen(int number)
+int	numlen(unsigned long long number)
 {
 	int	length;
 
@@ -26,27 +26,26 @@ int	numlen(int number)
 	return (length);
 }
 
-char	*ft_utoa(unsigned int n)
+char	*ft_utoa(unsigned long long n)
 {
 	int		len;
 	char	*num;
 
-	len = 0;
+	len = numlen(n);
 	num = (char *)malloc(sizeof(char) * (len + 1));
 	if (!num)
 		return (NULL);
 	num[len] = '\0';
-	len = numlen((int)num);
 	while (n != 0)
 	{
-		num[len - 1] = (n % 10) + '0';
+		num[len - 1] = (n % 10) + 48;
 		n /= 10;
 		len--;
 	}
 	return (num);
 }
 
-int	ft_printuint(unsigned int n)
+int	ft_printuint(unsigned long long n)
 {
 	int		printlen;
 	char	*num;
