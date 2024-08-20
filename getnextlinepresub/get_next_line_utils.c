@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:55:06 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/08/16 21:00:13 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/08/20 13:20:15 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,23 @@ char	*ft_strjoin(const char* str1, const char* str2)
 
 	i = 0;
 	j = 0;
-	total_size = 0;
-
+	total_size = ft_strlen(str1) + ft_strlen(str2);
+	result = malloc(sizeof(char) * (total_size + 1));
+	if (!str1 || !str2 || !result)
+		return (NULL);
+	while (str1[i] != '\0')
+	{
+		result[i] == str1[i];
+		i++;
+	}
+	while (str2[j] != '\0')
+	{
+		result[i] == str2[j];
+		i++;
+		j++;
+	}
+	result[total_size] = '\0';
+	return (result);
 }
 
 char	*ft_strchr(char *string, int character)
