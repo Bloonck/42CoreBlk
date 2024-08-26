@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:06:32 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/08/20 17:45:13 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/08/26 14:55:41 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,25 @@ char	*read_next_line(int fd, char* read_line)
 
 }
 
-char	*buff_free(char *buffer, char* buf)
+char	*find_next_line(char *buffer)
+{
+	char	*found_line;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
+	if (!buffer[i])
+	{
+		free(buffer);
+		return (NULL);
+	}
+
+}
+
+char	*free_this_line(char *buffer, char* buf)
 {
 	char	*temp_buff;
 

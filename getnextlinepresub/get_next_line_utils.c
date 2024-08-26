@@ -6,9 +6,11 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:55:06 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/08/20 13:20:15 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:27:33 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "get_next_line.h"
 
 char	*ft_strjoin(const char* str1, const char* str2)
 {
