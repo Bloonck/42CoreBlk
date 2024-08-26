@@ -6,13 +6,13 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:55:06 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/08/21 14:27:33 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/08/26 22:52:45 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(const char* str1, const char* str2)
+char	*ft_strjoin(const char *str1, const char *str2)
 {
 	char	*result;
 	int		total_size;
@@ -20,19 +20,19 @@ char	*ft_strjoin(const char* str1, const char* str2)
 	int		j;
 
 	i = 0;
-	j = 0;
 	total_size = ft_strlen(str1) + ft_strlen(str2);
 	result = malloc(sizeof(char) * (total_size + 1));
 	if (!str1 || !str2 || !result)
 		return (NULL);
 	while (str1[i] != '\0')
 	{
-		result[i] == str1[i];
+		result[i] = str1[i];
 		i++;
 	}
+	j = 0;
 	while (str2[j] != '\0')
 	{
-		result[i] == str2[j];
+		result[i] = str2[j];
 		i++;
 		j++;
 	}
@@ -52,13 +52,15 @@ char	*ft_strchr(char *string, int character)
 
 void	ft_bzero(void *memorypointer, size_t byteamount)
 {
-	unsigned char	*iterationpointer;
+	char	*iterationpointer;
+	size_t	i;
 
-	iterationpointer = (unsigned char *)memorypointer;
-	while (byteamount-- > 0)
+	i = 0;
+	iterationpointer = (char *)memorypointer;
+	while (i < byteamount)
 	{
-		*iterationpointer = 0;
-		iterationpointer++;
+		iterationpointer[i] = '\0';
+		i++;
 	}
 }
 
