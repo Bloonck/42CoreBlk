@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:06:32 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/08/26 23:12:42 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/09/14 19:04:58 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ char	*read_next_line(int fd, char *read_line)
 	int		bytes_read;
 
 	if (!read_line)
-	   read_line = (ft_calloc(1, 1));
-	buffer = calloc(BUFFER_SIZE + 1, sizeof(char));
+		read_line = (ft_calloc(1, 1));
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	bytes_read = 1;
 	while (bytes_read > 0)
 	{
@@ -68,7 +68,7 @@ char	*extract_this_line(char *buffer)
 
 	i = 0;
 	if (!buffer[i])
-	   return (NULL);	
+		return (NULL);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	extracted_line = ft_calloc(i + 2, sizeof(char));
@@ -105,4 +105,66 @@ char	*get_next_line(int fd)
 	line_get = extract_this_line(buffer);
 	buffer = find_next_line(buffer);
 	return (line_get);
+}
+
+#include <stdio.h>
+#include <fcntl.h>
+#include <assert.h>
+#include "get_next_line.h"
+
+int main() {
+    int fd;
+    char *line;
+
+    // Test 1: Read from a file with multiple lines
+    fd = open("test_file.txt", O_RDONLY);
+    assert(fd >= 0);
+    line = get_next_line(fd);
+    assert(line != NULL);
+    printf("%s", line);
+    free(line);
+    line = get_next_line(fd);
+    assert(line != NULL);
+    printf("%s", line);
+    free(line);
+    line = get_next_line(fd);
+    assert(line != NULL);
+    printf("%s", line);
+    free(line);
+    close(fd);
+
+    // Test 2: Read from a file with a single line
+    fd = open("test_file_single_line.txt", O_RDONLY);
+    assert(fd >= 0);
+    line = get_next_line(fd);
+    assert(line != NULL);
+    printf("%s", line);
+    free(line);
+    line = get_next_line(fd);
+    assert(line == NULL);
+    close(fd);
+
+    // Test 3: Read from a file with no lines (empty file)
+    fd = open("test_file_empty.txt", O_RDONLY);
+    assert(fd >= 0);
+    line = get_next_line(fd);
+    assert(line == NULL);
+    close(fd);
+
+    // Test 4: Read from a non-existent file
+    fd = open("non_existent_file.txt", O_RDONLY);
+    assert(fd < 0);
+    line = get_next_line(fd);
+    assert(line == NULL);
+
+    // Test 5: Read from a file with a very long line
+    fd = open("test_file_long_line.txt", O_RDONLY);
+    assert(fd >= 0);
+    line = get_next_line(fd);
+    assert(line != NULL);
+    printf("%s", line);
+    free(line);
+    close(fd);
+
+    return 0;
 }

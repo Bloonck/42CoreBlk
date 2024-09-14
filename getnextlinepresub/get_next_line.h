@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 13:20:29 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/08/26 22:16:47 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/09/14 18:52:10 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <unistd.h>
 # include <sys/syslimits.h>
 # include <limits.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 /*========== UTILITIES ==========*/
 
