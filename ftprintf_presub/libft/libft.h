@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:57:27 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/07/31 16:36:39 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:21:08 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 //----------------------------------//
 
-
 //---------- String Manipulation ----------//
 char	*ft_strchr(const char *string, int character);
 char	*ft_strdup(char *src);
@@ -75,4 +74,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(const char *s1, const char *set);
 char	**ft_split(const char *s, char c);
 //-----------------------------------------//
+
 #endif
