@@ -13,15 +13,18 @@
 #ifndef MINITALK_H
 # define MINITALK_H
 
+# define SIGUSR1 1
+# define SIGUSR2 0
+
 # include "libft.h"
 # include "ft_printf.h"
 # include <unistd.h>
 # include <signal.h>
 
-//====== Xross Functions ======\\
+//====== Xross Functions ======
 
 
 
-//=============================\\
+//=============================
 
 #endif

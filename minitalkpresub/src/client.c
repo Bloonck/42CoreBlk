@@ -12,7 +12,7 @@
 
 #include "../includes/minitalk.h"
 
-// SENDING CHARACTER DATA THROUGH BITS (BINARY) BY USING BITWISE OPERATOR '&'\\
+// SENDING CHARACTER DATA THROUGH BITS (BINARY) BY USING BITWISE OPERATOR '&'
 
 void	minispeak(int process_id, char *string_to_send)
 {
@@ -27,7 +27,7 @@ void	minispeak(int process_id, char *string_to_send)
 	{
 		while (bit_count < 8)
 		{
-			if ((string_to_send[i] & (0x01 << bit)) == 1)
+			if ((string_to_send[i] & (0x01 << bit_count)) == 1)
 				kill(process_id, SIGUSR1);
 			else
 				kill(process_id, SIGUSR2);
@@ -38,9 +38,9 @@ void	minispeak(int process_id, char *string_to_send)
 		bit_count = 0;
 	}
 }
-//============================================================================\\
+//============================================================================
 
-// HANDLING INVALID INPUT AND PARSING VALID INPUT TO BE SENT TO SERVER \\
+// HANDLING INVALID INPUT AND PARSING VALID INPUT TO BE SENT TO SERVER 
 
 int	main(int argc, char **argv)
 {
