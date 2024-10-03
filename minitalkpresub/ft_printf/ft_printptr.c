@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
+#include "../includes/minitalk.h"
 
 static int	ptrlen(uintptr_t ptr)
 {

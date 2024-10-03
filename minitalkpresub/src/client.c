@@ -27,7 +27,7 @@ void	minispeak(int process_id, char *string_to_send)
 	{
 		while (bit_count < 8)
 		{
-			if ((string_to_send[i] & (0x01 << bit_count)) == 1)
+			if ((string_to_send[i] & (0x80 >> bit_count)) == 0x80)
 				kill(process_id, SIGUSR1);
 			else
 				kill(process_id, SIGUSR2);

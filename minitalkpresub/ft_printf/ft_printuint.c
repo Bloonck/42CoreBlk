@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
-
+#include "../includes/minitalk.h"
+#include <stdint.h>
 int	numlen(unsigned long long number)
 {
 	int	length;

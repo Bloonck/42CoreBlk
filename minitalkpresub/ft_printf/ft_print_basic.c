@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
+#include "../includes/minitalk.h"
 #include <stdlib.h>
 
 int	ft_printchar(char c)
