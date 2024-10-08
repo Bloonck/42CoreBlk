@@ -10,6 +10,7 @@
 NAME        := client, server
 CC        := gcc
 FLAGS    := -Wall -Wextra -Werror 
+HEADERS  := includes/*.h
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
@@ -75,7 +76,7 @@ RM		    := rm -f
 
 ${NAME}:	${OBJS}
 			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
-			${CC} ${FLAGS} -o ${NAME} ${OBJS}
+			${CC} ${FLAGS} -o ${NAME} ${OBJS} ${HEADERS} 
 			@echo "$(GREEN)$(NAME) created ✔️"
 
 all:		${NAME}

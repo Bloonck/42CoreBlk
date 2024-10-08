@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
+#include <stdint.h>
 
 static int	ptrlen(uintptr_t ptr)
 {
