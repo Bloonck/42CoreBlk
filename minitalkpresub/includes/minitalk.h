@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:43:29 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/09/28 14:22:17 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:38:19 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,5 @@
 # include "ft_printf.h"
 # include <unistd.h>
 # include <signal.h>
-
-//====== Xross Functions ======
-
-
-
-//=============================
 
 #endif
