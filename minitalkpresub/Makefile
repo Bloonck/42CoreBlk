@@ -6,7 +6,7 @@
 #    By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/09 12:29:52 by zbin-md-          #+#    #+#              #
-#    Updated: 2024/10/09 19:38:57 by zbin-md-         ###   ########.fr        #
+#    Updated: 2024/10/09 20:59:17 by zbin-md-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,13 @@ CLIENT			=			client
 
 #~~~~~~~~~~~~~~~~ Sources ~~~~~~~~~~~~~~~~~~~#
 
-SRCS			=			$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+SERVER_SRCS			=			$(addprefix $(SRC_DIR), $(addsuffix .c, $(SERVER_FILES)))
 
-OBJS			=			$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+SERVER_OBJS			=			$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SERVER_FILES)))
+
+CLIENT_SRCS			=			$(addprefix $(SRC_DIR), $(addsuffix .c, $(CLIENT_FILES)))
+
+CLIENT_OBJS			=			$(addprefix $(OBJ_DIR), $(addsuffix .o, $(CLIENT_FILES)))
 
 #~~~~~~~~~~~~~~~~ Recipes ~~~~~~~~~~~~~~~~~~~#
 
