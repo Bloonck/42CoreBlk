@@ -6,7 +6,7 @@
 #    By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/09 12:29:52 by zbin-md-          #+#    #+#              #
-#    Updated: 2024/10/12 14:49:17 by zbin-md-         ###   ########.fr        #
+#    Updated: 2024/10/12 18:52:01 by zbin-md-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,15 @@ all:	$(SERVER) $(CLIENT)
 
 bonus:	$(SERVER_BONUS) $(CLIENT_BONUS)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)client.o: $(SRC_DIR)client.c 
+		@$(COMP) $(CFLAGS) -c $< -o $@ 
+		@echo "Compiling $<..."
+
+$(OBJ_DIR)utils.o: $(SRC_DIR)utils.c
+		@$(COMP) $(CFLAGS) -c $< -o $@
+		@echo "Compiling $<..."
+
+$(OBJ_DIR)server.o:	$(SRC_DIR)server.c
 		@$(COMP) $(CFLAGS) -c $< -o $@
 		@echo "Compiling $<..."
 
@@ -69,7 +77,7 @@ $(SERVER): $(OBJ_DIR)server.o
 		@echo "compiling printf"
 
 $(CLIENT):	$(OBJ_DIR)client.o $(OBJ_DIR)utils.o
-		@$(COMP) $(CFLAGS) $^ -o $@ $(HEADER)minitalk.h
+		@$(COMP) $(CFLAGS) $^ -o $@ $(FTPRINTF)libftprintf.a
 		@echo "Compiling Client..."
 
 $(SERVER_BONUS):	$(SERVER_BONUS_SRCS)
