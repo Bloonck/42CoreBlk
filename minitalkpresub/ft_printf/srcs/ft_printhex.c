@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "ft_printf.h"
+#include "libft.h"
 
 static int	hexlen(unsigned int number)
 {

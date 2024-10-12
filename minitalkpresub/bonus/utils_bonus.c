@@ -6,11 +6,11 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 20:59:38 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/10/10 19:04:33 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/10/10 19:04:03 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "/Users/zbin-md-/minitalkpresub/includes/minitalk.h"
 #include <stddef.h>
 
 int	ft_atoi(const char *str)
