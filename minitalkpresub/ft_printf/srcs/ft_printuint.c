@@ -6,12 +6,12 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:38:06 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/10/09 11:38:03 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/08/08 14:28:05 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
-#include <stdint.h>
+#include "ft_printf.h"
+#include "libft.h"
 
 int	numlen(unsigned long long number)
 {

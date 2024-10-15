@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "ft_printf.h"
+#include "libft.h"
 
 int	format_printlist(va_list args, const char format)
 {

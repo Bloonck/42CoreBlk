@@ -6,48 +6,95 @@
 #    By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/09 12:29:52 by zbin-md-          #+#    #+#              #
-#    Updated: 2024/10/09 20:59:17 by zbin-md-         ###   ########.fr        #
+#    Updated: 2024/10/12 18:52:01 by zbin-md-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME			=			minitalk
+
 #~~~~~~~~~~~~~~~~ Variables ~~~~~~~~~~~~~~~~~#
 
-COMP			=			gcc
+COMP			:=			gcc
 
-CFLAGS			=			-Wall -Werror -Wextra
+CFLAGS			:=			-Wall -Werror -Wextra
 
-REMOVE			=			rm -rf
+REMOVE			:=			rm -rf
 
-SRC_DIR			=			src/
+SRC_DIR			:=			src/
 
-OBJ_DIR			=			obj/
+OBJ_DIR			:=			obj/
 
-SERVER			=			server
+BONUS_DIR		:=			bonus/
 
-CLIENT			=			client
+SERVER			:=			server
+
+CLIENT			:=			client
+
+SERVER_BONUS	:=			server_bonus
+
+CLIENT_BONUS	:=			client_bonus
+
+FTPRINTF		:=			ft_printf/
+
+HEADER			:=			includes/
 
 #~~~~~~~~~~~~~~~~ Sources ~~~~~~~~~~~~~~~~~~~#
 
-SERVER_SRCS			=			$(addprefix $(SRC_DIR), $(addsuffix .c, $(SERVER_FILES)))
+SERVER_SRCS := $(wildcard $(SRC_DIR)server.c)
 
-SERVER_OBJS			=			$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SERVER_FILES)))
+CLIENT_SRCS := $(wildcard $(SRC_DIR)client.c $(SRC_DIR)utils.c)
 
-CLIENT_SRCS			=			$(addprefix $(SRC_DIR), $(addsuffix .c, $(CLIENT_FILES)))
+BONUS_SERVER_SRCS	:=	$(wildcard $(BONUS_DIR)server.c)
 
-CLIENT_OBJS			=			$(addprefix $(OBJ_DIR), $(addsuffix .o, $(CLIENT_FILES)))
+BONUS_CLIENT_SRCS	:=	$(wildcard $(BONUS_DIR)client.c $(BONUS_DIR)utils.c)
+
+BONUS_SERVER_OBJS 	:=	$(BONUS_SERVER_SRCS:.c=.o)
+
+BONUS_CLIENT_OBJS 	:=	$(BONUS_CLIENT_SRCS:.c=.o)
 
 #~~~~~~~~~~~~~~~~ Recipes ~~~~~~~~~~~~~~~~~~~#
 
 all:	$(SERVER) $(CLIENT)
 
-%.o:	%.c
-		$(COMP) $(CFLAGS) -c $< -o $@
+bonus:	$(SERVER_BONUS) $(CLIENT_BONUS)
+
+$(OBJ_DIR)client.o: $(SRC_DIR)client.c 
+		@$(COMP) $(CFLAGS) -c $< -o $@ 
+		@echo "Compiling $<..."
+
+$(OBJ_DIR)utils.o: $(SRC_DIR)utils.c
+		@$(COMP) $(CFLAGS) -c $< -o $@
+		@echo "Compiling $<..."
+
+$(OBJ_DIR)server.o:	$(SRC_DIR)server.c
+		@$(COMP) $(CFLAGS) -c $< -o $@
+		@echo "Compiling $<..."
+
+$(SERVER): $(OBJ_DIR)server.o
+		@$(MAKE) -C $(FTPRINTF)
+		@$(COMP) $(CFLAGS) $< -o $@ $(FTPRINTF)libftprintf.a
+		@echo "Compiling Server..."
+		@echo "compiling printf"
+
+$(CLIENT):	$(OBJ_DIR)client.o $(OBJ_DIR)utils.o
+		@$(COMP) $(CFLAGS) $^ -o $@ $(FTPRINTF)libftprintf.a
+		@echo "Compiling Client..."
+
+$(SERVER_BONUS):	$(SERVER_BONUS_SRCS)
+		@$(COMP) $(CFLAGS) $^ -o $@
+		@echo "Compiling Server Bonus..."
+
+$(CLIENT_BONUS):	$(CLIENT_BONUS_SRCS)
+		@$(COMP) $(CFLAGS) $^ -o $@
+		@echo "Compiling Client Bonus..."
 
 clean:
-	$(REMOVE) $(OBJS)
+	@$(REMOVE) $(OBJ_DIR)*.o
+	@echo "Cleaned!"
 
 fclean: clean
-	$(REMOVE) $(SERVER) $(CLIENT)
+	@$(REMOVE) $(SERVER_BONUS) $(CLIENT_BONUS) $(SERVER) $(CLIENT)
+	@echo "Full Cleaned!"
 
 re: fclean all
 
