@@ -106,7 +106,7 @@ char	*get_next_line(int fd)
 	buffer = find_next_line(buffer);
 	return (line_get);
 }
-
+/*
 #include <stdio.h>
 #include <fcntl.h>
 #include <assert.h>

@@ -38,6 +38,7 @@ void	minispeak(int process_id, char *string_to_send)
 		bit_count = 0;
 	}
 }
+
 //============================================================================
 
 // HANDLING INVALID INPUT AND PARSING VALID INPUT TO BE SENT TO SERVER 
