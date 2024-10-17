@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 15:03:06 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/10/12 13:45:59 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/10/17 14:14:27 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 3)
 	{
-		ft_printf("Use case: ./client [PID of server] [Message]");
+		ft_printf("Use case: ./client [PID of server] [Message]\n");
 		return (2);
 	}
 	process_id = ft_atoi(argv[1]);
