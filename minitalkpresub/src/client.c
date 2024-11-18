@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 15:03:06 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/10/17 14:14:27 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/11/18 19:08:32 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	minispeak(int process_id, char *string_to_send)
 	length = ft_strlen(string_to_send);
 	bit_count = 0;
 	i = 0;
-	while (i < length)
+	while (i++ < length)
 	{
-		while (bit_count < 8)
+		while (bit_count++ < 8)
 		{
 			if ((string_to_send[i] & (0x80 >> bit_count)) == 0x80)
 				kill(process_id, SIGUSR1);
@@ -34,8 +34,8 @@ void	minispeak(int process_id, char *string_to_send)
 			bit_count++;
 			usleep(1000);
 		}
-		i++;
 		bit_count = 0;
+		usleep(3000)
 	}
 }
 //=======================================================================
