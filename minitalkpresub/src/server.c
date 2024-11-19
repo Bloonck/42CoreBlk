@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 20:37:09 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/10/17 14:29:36 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:29:37 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 void	minihandler(int signal)
 {
-	static int		bits;
-	static char		result;
+	static int					bits;
+	static unsigned char		result;
 
-	if (signal == SIGUSR1)
-		bits = (bits << 1) | 1;
-	else if (signal == SIGUSR2)
-		bits = (bits << 1) | 0;
+	result |= (signal == SIGUSR1);
+	bits++;
 	if (bits == 8)
 	{
-		result = bits;
 		ft_printf("%c", result);
 		bits = 0;
 		result = 0;
 	}
+	else
+		result <<= 1;
 }
 
 int	main(void)
@@ -40,4 +39,5 @@ int	main(void)
 	signal(SIGUSR2, minihandler);
 	while (1)
 		pause();
+	return (0);
 }
