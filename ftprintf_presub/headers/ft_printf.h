@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 16:55:15 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/08/08 14:29:20 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:11:47 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_printchar(char c);
 int	ft_printpercent(void);
 int	ft_printstr(char *str);
 int	ft_printnbr(int n);
-int	ft_printptr(uintptr_t pointer);
+int	ft_printptr(unsigned long long pointer);
 int	ft_printhex(unsigned int number, const char format);
 int	ft_printuint(unsigned long long n);
 //--------------------------------------//
