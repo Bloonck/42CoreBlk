@@ -6,7 +6,7 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 16:55:15 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/08/08 14:29:20 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:02:37 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <stdarg.h>
+# include <cstdint.h>
 
 //------------ Printf --------------//
 int	ft_printf(const char *string, ...);

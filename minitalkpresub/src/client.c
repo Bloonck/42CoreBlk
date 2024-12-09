@@ -6,36 +6,29 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 15:03:06 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/10/12 13:45:59 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:32:14 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
-// SENDING CHARACTER DATA THROUGH BITS (BINARY) BY USING BITWISE OPERATOR '&'
+// SENDING SIGNALS BY GOING THROUGH EACH BIT AND PERFORMING A MODULUS OPERATION
 
-void	minispeak(int process_id, char *string_to_send)
+void	minispeak(int process_id, unsigned char bit_octet)
 {
-	int	length;
-	int	bit_count;
-	int	i;
+	int				bit_pos;
+	unsigned char	temp_bit;
 
-	length = ft_strlen(string_to_send);
-	bit_count = 0;
-	i = 0;
-	while (i < length)
+	bit_pos = 8;
+	temp_bit = bit_octet;
+	while (bit_pos-- > 0)
 	{
-		while (bit_count < 8)
-		{
-			if ((string_to_send[i] & (0x80 >> bit_count)) == 0x80)
-				kill(process_id, SIGUSR1);
-			else
-				kill(process_id, SIGUSR2);
-			bit_count++;
-			usleep(1000);
-		}
-		i++;
-		bit_count = 0;
+		temp_bit = bit_octet >> bit_pos;
+		if (temp_bit % 2 == 0)
+			kill(process_id, SIGUSR2);
+		else
+			kill(process_id, SIGUSR1);
+		usleep(100);
 	}
 }
 
@@ -45,17 +38,23 @@ void	minispeak(int process_id, char *string_to_send)
 
 int	main(int argc, char **argv)
 {
-	int		process_id;
+	int		server_id;
+	int		str_increment;
 	char	*string_to_send;
 
 	if (argc != 3)
 	{
-		ft_printf("Use case: ./client [PID of server] [Message]");
-		return (2);
+		ft_printf("Usage: ./client [PID] [Message]\n");
+		return (0);
 	}
-	process_id = ft_atoi(argv[1]);
+	server_id = ft_atoi(argv[1]);
 	string_to_send = argv[2];
-	minispeak(process_id, string_to_send);
+	str_increment = 0;
+	while (string_to_send[str_increment])
+	{
+		minispeak(server_id, (unsigned char)string_to_send[str_increment]);
+		str_increment++;
+	}
 	return (0);
 }
 

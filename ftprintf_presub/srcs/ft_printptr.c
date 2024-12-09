@@ -6,14 +6,14 @@
 /*   By: zbin-md- <zbin-md-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:31:00 by zbin-md-          #+#    #+#             */
-/*   Updated: 2024/08/08 15:13:21 by zbin-md-         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:10:52 by zbin-md-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-static int	ptrlen(uintptr_t ptr)
+static int	ptrlen(unsigned long long ptr)
 {
 	int	len;
 
@@ -26,7 +26,7 @@ static int	ptrlen(uintptr_t ptr)
 	return (len);
 }
 
-static void	putptr(uintptr_t ptr)
+static void	putptr(unsigned long long ptr)
 {
 	if (ptr >= 16)
 	{
@@ -42,7 +42,7 @@ static void	putptr(uintptr_t ptr)
 	}
 }
 
-int	ft_printptr(uintptr_t pointer)
+int	ft_printptr(unsigned long long pointer)
 {
 	int	outputlen;
 
